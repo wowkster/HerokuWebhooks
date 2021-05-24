@@ -1,7 +1,8 @@
 import express from "express";
 const app = express();
 import request from "request";
-import { json, urlencoded } from "body-parser";
+import pkg from 'body-parser';
+const { json, urlencoded } = pkg;
 
 app.use(json());
 app.use(urlencoded({ extended: true }));
