@@ -20,7 +20,7 @@ app.post("/webhook", async (req, res) => {
 
     if (!webhookContent) return console.log("============================================= Not Webhook =============================================")
 
-    console.log(`Webhook Data: ${ webhookContent }`)
+    console.log(`Webhook Data: `, options)
 
     const options = {
         method: "POST",
@@ -32,7 +32,7 @@ app.post("/webhook", async (req, res) => {
         body: JSON.stringify(webhookContent),
     };
 
-    console.log(`Request Options: ${ options }`)
+    console.log(`Request Options: `, options)
 
     request(options, function (error, response) {
         if (error) throw new Error(error);
