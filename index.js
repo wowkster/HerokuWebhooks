@@ -20,6 +20,8 @@ app.post("/webhook", async (req, res) => {
 
     if (!webhookContent) return console.log("============================================= Not Webhook =============================================")
 
+    console.log(`Webhook Data: ${ webhookContent }`)
+
     const options = {
         method: "POST",
         url: "https://discord.com/api/webhooks/846362498952986646/LXK4yC-jN7qEqw_ZIOMKyEhf8v705SAB896XRdKyE6PCWW2Iz_IgdDXiWMjkQPpjuAYb",
@@ -29,6 +31,9 @@ app.post("/webhook", async (req, res) => {
         //Format JSON DATA
         body: JSON.stringify(webhookContent),
     };
+
+    console.log(`Request Options: ${ options }`)
+
     request(options, function (error, response) {
         if (error) throw new Error(error);
         console.log(`Response: ${ JSON.stringify(response) }`)
