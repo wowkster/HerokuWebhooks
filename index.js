@@ -78,8 +78,11 @@ function getWebhookData(Payload) {
             ]
           }
     } else if (Payload.resource === 'dyno') {
+        const app = Payload.data.app.name
 
-        const up = true
+        if (Payload.data.state !== 'up' && Payload.data.state !== 'down') return null
+
+        const up = Payload.data.state == "up"
         return {
             "content": null,
             "embeds": [
