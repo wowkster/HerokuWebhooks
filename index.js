@@ -16,11 +16,11 @@ app.post("/webhook", async (req, res) => {
 
     const webhookContent = getWebhookData(Payload)
 
-    if (Payload.resource === 'build') console.log(Payload.data)
+    if (Payload.resource === 'dyno') console.log(Payload.data)
 
-    if (!webhookContent) return console.log("============================================= Not Webhook =============================================")
+    if (!webhookContent) return
 
-    console.log(`Webhook Data: `, webhookContent)
+    // console.log(`Webhook Data: `, webhookContent)
 
     const options = {
         method: "POST",
@@ -32,7 +32,7 @@ app.post("/webhook", async (req, res) => {
         body: JSON.stringify(webhookContent),
     };
 
-    console.log(`Request Options: `, options)
+    // console.log(`Request Options: `, options)
 
     request(options, function (error, response) {
         if (error) throw new Error(error);
@@ -79,5 +79,16 @@ function getWebhookData(Payload) {
           }
     } else if (Payload.resource === 'dyno') {
 
+        const up = true
+        return {
+            "content": null,
+            "embeds": [
+              {
+                "title": "Status Notification",
+                "description": `Your app [\`${app}\`](https://dashboard.heroku.com/apps/${app}) is ${(up ? "online" : "currently down")}!`,
+                "color": (up ? 5822463 : 16744536)
+              }
+            ]
+          }
     }
 }
