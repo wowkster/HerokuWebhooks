@@ -20,7 +20,7 @@ app.post("/webhook", async (req, res) => {
 
     if (!webhookContent) return console.log("============================================= Not Webhook =============================================")
 
-    console.log(`Webhook Data: `, options)
+    console.log(`Webhook Data: `, webhookContent)
 
     const options = {
         method: "POST",
