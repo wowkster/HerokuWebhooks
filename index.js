@@ -12,11 +12,11 @@ app.use(urlencoded({ extended: true }));
 app.post("/webhook", async (req, res) => {
     const Payload = req.body;
 
-    console.log(Payload)
-
     res.sendStatus(200);
 
     const webhookContent = getWebhookData(Payload)
+
+    if (Payload.resource === 'build') console.log(Payload.data)
 
     if (!webhookContent) return
 
