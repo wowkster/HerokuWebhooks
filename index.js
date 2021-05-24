@@ -18,7 +18,7 @@ app.post("/webhook", async (req, res) => {
 
     if (Payload.resource === 'build') console.log(Payload.data)
 
-    if (!webhookContent) return
+    if (!webhookContent) return console.log("============================================= Not Webhook =============================================")
 
     const options = {
         method: "POST",
@@ -32,6 +32,8 @@ app.post("/webhook", async (req, res) => {
     request(options, function (error, response) {
         if (error) throw new Error(error);
     });
+
+    console.log("Sent Discord POST Request")
 });
 app.listen(PORT, () => console.log(`App is running on port ${PORT}!`));
 
