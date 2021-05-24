@@ -89,7 +89,7 @@ function getWebhookData(Payload) {
               {
                 "title": "Status Notification",
                 "description": `Your app [\`${app}\`](https://dashboard.heroku.com/apps/${app}) is ${(up ? "online" : "currently down")}!`,
-                "color": (up ? 5822463 : 16744536)
+                "color": (up ? 5822463 : 15081504)
               }
             ]
           }
