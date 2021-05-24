@@ -31,7 +31,7 @@ app.post("/webhook", async (req, res) => {
     };
     request(options, function (error, response) {
         if (error) throw new Error(error);
-        console.log(`Response: ${response}`)
+        console.log(`Response: ${ JSON.stringify(response) }`)
     });
 
     console.log("Sent Discord POST Request")
