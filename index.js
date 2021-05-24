@@ -28,7 +28,7 @@ app.post("/webhook", async (req, res) => {
         }),
     };
     request(options, function (error, response) {
-         (error) throw new Error(error);
+        if (error) throw new Error(error);
     });
 });
 app.listen(PORT, () => console.log(`App is running on port ${PORT}!`));
