@@ -4,11 +4,13 @@ import request from "request";
 import pkg from 'body-parser';
 const { json, urlencoded } = pkg;
 
+const PORT = process.env.PORT || 3000;
+
 app.use(json());
 app.use(urlencoded({ extended: true }));
 
 app.post("/webhook", async (req, res) => {
-    console.log(`Request made from ${req.ip}`)
+    //console.log(`Request made from ${req.ip}`)
  const Payload = req.body;
 //Respond To Heroku Webhook
  res.sendStatus(200);
@@ -27,7 +29,7 @@ app.post("/webhook", async (req, res) => {
  };
  request(options, function (error, response) {
   if (error) throw new Error(error);
-  console.log(response);
+  //console.log(response);
  });
 });
-app.listen(process.env.PORT || 3000, () => console.log("App is running on port 3000!"));
+app.listen(PORT, () => console.log(`App is running on port ${PORT}!`));
