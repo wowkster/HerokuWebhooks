@@ -8,6 +8,7 @@ app.use(json());
 app.use(urlencoded({ extended: true }));
 
 app.post("/webhook", async (req, res) => {
+    console.log(`Request made from ${req.ip}`)
  const Payload = req.body;
 //Respond To Heroku Webhook
  res.sendStatus(200);
@@ -21,7 +22,7 @@ app.post("/webhook", async (req, res) => {
   },
 //Format JSON DATA
   body: JSON.stringify({
-   content: `This is A Webhook notification!A build for your app ${Payload.data.app.name} was just triggered`,
+   content: `This is A Webhook notification! A build for your app ${Payload.data.app.name} was just triggered`,
   }),
  };
  request(options, function (error, response) {
