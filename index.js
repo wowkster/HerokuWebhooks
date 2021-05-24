@@ -18,6 +18,8 @@ app.post("/webhook", async (req, res) => {
 
     const webhookContent = getWebhookData(Payload)
 
+    if (!webhookContent) return
+
     const options = {
         method: "POST",
         url: "https://discord.com/api/webhooks/846362498952986646/LXK4yC-jN7qEqw_ZIOMKyEhf8v705SAB896XRdKyE6PCWW2Iz_IgdDXiWMjkQPpjuAYb",
@@ -37,6 +39,9 @@ function getWebhookData(Payload) {
     if (Payload.resource === 'build'){
         const succeeded = (Payload.data.status === 'succeeded')
         const email = Payload.actor.email
+
+        if (!Payload.data.slug) return null
+
         const commit = Payload.data.slug.commit
         const app = Payload.data.app.name
 
