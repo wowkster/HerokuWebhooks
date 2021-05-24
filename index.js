@@ -59,7 +59,7 @@ function getWebhookData(Payload) {
               {
                 "title": "Build Notification",
                 "description": `A build for your app [\`${app}\`](https://dashboard.heroku.com/apps/${app}) was just triggered`,
-                "color": (succeeded ? "#58ff6c" : "#ff5858"),
+                "color": (succeeded ? 5832556 : 16734296),
                 "fields": [
                   {
                     "name": "User",
