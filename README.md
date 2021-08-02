@@ -14,6 +14,6 @@
 
 ![](https://i.imgur.com/CGXhV0d.png)
 
-5. Input a name for your webhook (doesn't matter) and the url of your webhook application. Make sure that the `api:build` and `dyno` event are selected
+5. Input a name for your webhook (doesn't matter) and the url of your webhook application (don't forget to add `/webhook` to the end). Make sure that the `api:build` and `dyno` event are selected
 
 ![](https://i.imgur.com/RDRXdH5.png)
