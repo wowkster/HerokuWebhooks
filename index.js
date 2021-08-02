@@ -1,3 +1,7 @@
+// Copyright Wowkster 2021. All Rights Reserved.
+
+import { config as load_env } from "dotenv"
+load_env()
 import express from "express";
 const app = express();
 import request from "request";
@@ -20,19 +24,15 @@ app.post("/webhook", async (req, res) => {
 
     if (!webhookContent) return
 
-    // console.log(`Webhook Data: `, webhookContent)
-
     const options = {
         method: "POST",
-        url: "https://discord.com/api/webhooks/846362498952986646/LXK4yC-jN7qEqw_ZIOMKyEhf8v705SAB896XRdKyE6PCWW2Iz_IgdDXiWMjkQPpjuAYb",
+        url: process.env.WEBHOOK_URL,
         headers: {
             "Content-type": "application/json",
         },
         //Format JSON DATA
         body: JSON.stringify(webhookContent),
     };
-
-    // console.log(`Request Options: `, options)
 
     request(options, function (error, response) {
         if (error) throw new Error(error);
